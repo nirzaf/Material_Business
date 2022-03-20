@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d0520ae2580e4cf8802f70c083124605" Name="Diagram1" ZoomLevel="88">
+        <EntityTypeShape EntityType="WorkShopDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkShopDBModel.tbl_Material" Width="2.125" PointX="11.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkShopDBModel.tbl_Student_WorkShop_Mapping" Width="2.625" PointX="12.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkShopDBModel.tbl_Trainer_Workshop_Mapping" Width="2.5" PointX="5.875" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkShopDBModel.tbl_User" Width="2" PointX="9.125" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WorkShopDBModel.tbl_WorkShop" Width="1.875" PointX="7" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_Material_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_material_tbl_WorkShop" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop" ManuallyRouted="false" />
+        <AssociationConnector Association="WorkShopDBModel.FK_tbl_WorkShop_tbl_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

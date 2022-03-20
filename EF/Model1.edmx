@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WorkShopDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="WorkShopDBModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="WorkShopDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Material" EntityType="WorkShopDBModel.Store.tbl_Material" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Student_WorkShop_Mapping" EntityType="WorkShopDBModel.Store.tbl_Student_WorkShop_Mapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_Trainer_Workshop_Mapping" EntityType="WorkShopDBModel.Store.tbl_Trainer_Workshop_Mapping" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_User" EntityType="WorkShopDBModel.Store.tbl_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_WorkShop" EntityType="WorkShopDBModel.Store.tbl_WorkShop" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_tbl_Material_tbl_User" Association="WorkShopDBModel.Store.FK_tbl_Material_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Material" EntitySet="tbl_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_material_tbl_WorkShop" Association="WorkShopDBModel.Store.FK_tbl_material_tbl_WorkShop">
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+            <End Role="tbl_Material" EntitySet="tbl_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Student_WorkShop_Mapping_tbl_User" Association="WorkShopDBModel.Store.FK_tbl_Student_WorkShop_Mapping_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Student_WorkShop_Mapping" EntitySet="tbl_Student_WorkShop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop" Association="WorkShopDBModel.Store.FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop">
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+            <End Role="tbl_Student_WorkShop_Mapping" EntitySet="tbl_Student_WorkShop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Trainer_Workshop_Mapping_tbl_User" Association="WorkShopDBModel.Store.FK_tbl_Trainer_Workshop_Mapping_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Trainer_Workshop_Mapping" EntitySet="tbl_Trainer_Workshop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop" Association="WorkShopDBModel.Store.FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop">
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+            <End Role="tbl_Trainer_Workshop_Mapping" EntitySet="tbl_Trainer_Workshop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_WorkShop_tbl_User" Association="WorkShopDBModel.Store.FK_tbl_WorkShop_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Material">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="int" Nullable="false" />
+          <Property Name="MaterialDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaterialPath" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkShopId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Student_WorkShop_Mapping">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="int" />
+          <Property Name="WorkShopId" Type="int" />
+          <Property Name="IsApproved" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_Trainer_Workshop_Mapping">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerId" Type="int" />
+          <Property Name="workShopId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName_Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserGender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserDob" Type="datetime" />
+          <Property Name="SkillsSet" Type="nvarchar" MaxLength="50" />
+          <Property Name="Experience" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_WorkShop">
+          <Key>
+            <PropertyRef Name="WorkShopId" />
+          </Key>
+          <Property Name="WorkShopId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="WorkShopTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkShopDate" Type="datetime" />
+          <Property Name="WorkShopDuration" Type="nvarchar" MaxLength="50" />
+          <Property Name="WorkShopTopics" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tbl_Material_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.Store.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Material" Type="WorkShopDBModel.Store.tbl_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_Material">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_material_tbl_WorkShop">
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.Store.tbl_WorkShop" Multiplicity="1" />
+          <End Role="tbl_Material" Type="WorkShopDBModel.Store.tbl_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WorkShop">
+              <PropertyRef Name="WorkShopId" />
+            </Principal>
+            <Dependent Role="tbl_Material">
+              <PropertyRef Name="WorkShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Student_WorkShop_Mapping_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.Store.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Student_WorkShop_Mapping" Type="WorkShopDBModel.Store.tbl_Student_WorkShop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_Student_WorkShop_Mapping">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop">
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.Store.tbl_WorkShop" Multiplicity="0..1" />
+          <End Role="tbl_Student_WorkShop_Mapping" Type="WorkShopDBModel.Store.tbl_Student_WorkShop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WorkShop">
+              <PropertyRef Name="WorkShopId" />
+            </Principal>
+            <Dependent Role="tbl_Student_WorkShop_Mapping">
+              <PropertyRef Name="WorkShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Trainer_Workshop_Mapping_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.Store.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Trainer_Workshop_Mapping" Type="WorkShopDBModel.Store.tbl_Trainer_Workshop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_Trainer_Workshop_Mapping">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop">
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.Store.tbl_WorkShop" Multiplicity="0..1" />
+          <End Role="tbl_Trainer_Workshop_Mapping" Type="WorkShopDBModel.Store.tbl_Trainer_Workshop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WorkShop">
+              <PropertyRef Name="WorkShopId" />
+            </Principal>
+            <Dependent Role="tbl_Trainer_Workshop_Mapping">
+              <PropertyRef Name="workShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_WorkShop_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.Store.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.Store.tbl_WorkShop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_WorkShop">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WorkShopDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WorkShopDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="WorkShopDBModel.sysdiagram" />
+          <EntitySet Name="tbl_Material" EntityType="WorkShopDBModel.tbl_Material" />
+          <EntitySet Name="tbl_Student_WorkShop_Mapping" EntityType="WorkShopDBModel.tbl_Student_WorkShop_Mapping" />
+          <EntitySet Name="tbl_Trainer_Workshop_Mapping" EntityType="WorkShopDBModel.tbl_Trainer_Workshop_Mapping" />
+          <EntitySet Name="tbl_User" EntityType="WorkShopDBModel.tbl_User" />
+          <EntitySet Name="tbl_WorkShop" EntityType="WorkShopDBModel.tbl_WorkShop" />
+          <AssociationSet Name="FK_tbl_Material_tbl_User" Association="WorkShopDBModel.FK_tbl_Material_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Material" EntitySet="tbl_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_material_tbl_WorkShop" Association="WorkShopDBModel.FK_tbl_material_tbl_WorkShop">
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+            <End Role="tbl_Material" EntitySet="tbl_Material" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Student_WorkShop_Mapping_tbl_User" Association="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Student_WorkShop_Mapping" EntitySet="tbl_Student_WorkShop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop" Association="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop">
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+            <End Role="tbl_Student_WorkShop_Mapping" EntitySet="tbl_Student_WorkShop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Trainer_Workshop_Mapping_tbl_User" Association="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_Trainer_Workshop_Mapping" EntitySet="tbl_Trainer_Workshop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop" Association="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop">
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+            <End Role="tbl_Trainer_Workshop_Mapping" EntitySet="tbl_Trainer_Workshop_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_WorkShop_tbl_User" Association="WorkShopDBModel.FK_tbl_WorkShop_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_WorkShop" EntitySet="tbl_WorkShop" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Material">
+          <Key>
+            <PropertyRef Name="MaterialId" />
+          </Key>
+          <Property Name="MaterialId" Type="Int32" Nullable="false" />
+          <Property Name="MaterialDescription" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MaterialPath" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WorkShopId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_User" Relationship="WorkShopDBModel.FK_tbl_Material_tbl_User" FromRole="tbl_Material" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_WorkShop" Relationship="WorkShopDBModel.FK_tbl_material_tbl_WorkShop" FromRole="tbl_Material" ToRole="tbl_WorkShop" />
+        </EntityType>
+        <EntityType Name="tbl_Student_WorkShop_Mapping">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" />
+          <Property Name="WorkShopId" Type="Int32" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <NavigationProperty Name="tbl_User" Relationship="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_User" FromRole="tbl_Student_WorkShop_Mapping" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_WorkShop" Relationship="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop" FromRole="tbl_Student_WorkShop_Mapping" ToRole="tbl_WorkShop" />
+        </EntityType>
+        <EntityType Name="tbl_Trainer_Workshop_Mapping">
+          <Key>
+            <PropertyRef Name="SerialNo" />
+          </Key>
+          <Property Name="SerialNo" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerId" Type="Int32" />
+          <Property Name="workShopId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="tbl_User" Relationship="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_User" FromRole="tbl_Trainer_Workshop_Mapping" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_WorkShop" Relationship="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop" FromRole="tbl_Trainer_Workshop_Mapping" ToRole="tbl_WorkShop" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName_Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserGender" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IsActive" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UserDob" Type="DateTime" Precision="3" />
+          <Property Name="SkillsSet" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Experience" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_Material" Relationship="WorkShopDBModel.FK_tbl_Material_tbl_User" FromRole="tbl_User" ToRole="tbl_Material" />
+          <NavigationProperty Name="tbl_Student_WorkShop_Mapping" Relationship="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_User" FromRole="tbl_User" ToRole="tbl_Student_WorkShop_Mapping" />
+          <NavigationProperty Name="tbl_Trainer_Workshop_Mapping" Relationship="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_User" FromRole="tbl_User" ToRole="tbl_Trainer_Workshop_Mapping" />
+          <NavigationProperty Name="tbl_WorkShop" Relationship="WorkShopDBModel.FK_tbl_WorkShop_tbl_User" FromRole="tbl_User" ToRole="tbl_WorkShop" />
+        </EntityType>
+        <EntityType Name="tbl_WorkShop">
+          <Key>
+            <PropertyRef Name="WorkShopId" />
+          </Key>
+          <Property Name="WorkShopId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkShopTitle" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WorkShopDate" Type="DateTime" Precision="3" />
+          <Property Name="WorkShopDuration" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WorkShopTopics" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="tbl_Material" Relationship="WorkShopDBModel.FK_tbl_material_tbl_WorkShop" FromRole="tbl_WorkShop" ToRole="tbl_Material" />
+          <NavigationProperty Name="tbl_Student_WorkShop_Mapping" Relationship="WorkShopDBModel.FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop" FromRole="tbl_WorkShop" ToRole="tbl_Student_WorkShop_Mapping" />
+          <NavigationProperty Name="tbl_Trainer_Workshop_Mapping" Relationship="WorkShopDBModel.FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop" FromRole="tbl_WorkShop" ToRole="tbl_Trainer_Workshop_Mapping" />
+          <NavigationProperty Name="tbl_User" Relationship="WorkShopDBModel.FK_tbl_WorkShop_tbl_User" FromRole="tbl_WorkShop" ToRole="tbl_User" />
+        </EntityType>
+        <Association Name="FK_tbl_Material_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Material" Type="WorkShopDBModel.tbl_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_Material">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_material_tbl_WorkShop">
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.tbl_WorkShop" Multiplicity="1" />
+          <End Role="tbl_Material" Type="WorkShopDBModel.tbl_Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WorkShop">
+              <PropertyRef Name="WorkShopId" />
+            </Principal>
+            <Dependent Role="tbl_Material">
+              <PropertyRef Name="WorkShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Student_WorkShop_Mapping_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Student_WorkShop_Mapping" Type="WorkShopDBModel.tbl_Student_WorkShop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_Student_WorkShop_Mapping">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Student_WorkShop_Mapping_tbl_WorkShop">
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.tbl_WorkShop" Multiplicity="0..1" />
+          <End Role="tbl_Student_WorkShop_Mapping" Type="WorkShopDBModel.tbl_Student_WorkShop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WorkShop">
+              <PropertyRef Name="WorkShopId" />
+            </Principal>
+            <Dependent Role="tbl_Student_WorkShop_Mapping">
+              <PropertyRef Name="WorkShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Trainer_Workshop_Mapping_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_Trainer_Workshop_Mapping" Type="WorkShopDBModel.tbl_Trainer_Workshop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_Trainer_Workshop_Mapping">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Trainer_Workshop_Mapping_tbl_WorkShop">
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.tbl_WorkShop" Multiplicity="0..1" />
+          <End Role="tbl_Trainer_Workshop_Mapping" Type="WorkShopDBModel.tbl_Trainer_Workshop_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_WorkShop">
+              <PropertyRef Name="WorkShopId" />
+            </Principal>
+            <Dependent Role="tbl_Trainer_Workshop_Mapping">
+              <PropertyRef Name="workShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_WorkShop_tbl_User">
+          <End Role="tbl_User" Type="WorkShopDBModel.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_WorkShop" Type="WorkShopDBModel.tbl_WorkShop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="tbl_WorkShop">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WorkShopDBModelStoreContainer" CdmEntityContainer="WorkShopDBEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WorkShopDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Material">
+            <EntityTypeMapping TypeName="WorkShopDBModel.tbl_Material">
+              <MappingFragment StoreEntitySet="tbl_Material">
+                <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+                <ScalarProperty Name="MaterialDescription" ColumnName="MaterialDescription" />
+                <ScalarProperty Name="MaterialPath" ColumnName="MaterialPath" />
+                <ScalarProperty Name="WorkShopId" ColumnName="WorkShopId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Student_WorkShop_Mapping">
+            <EntityTypeMapping TypeName="WorkShopDBModel.tbl_Student_WorkShop_Mapping">
+              <MappingFragment StoreEntitySet="tbl_Student_WorkShop_Mapping">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="WorkShopId" ColumnName="WorkShopId" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Trainer_Workshop_Mapping">
+            <EntityTypeMapping TypeName="WorkShopDBModel.tbl_Trainer_Workshop_Mapping">
+              <MappingFragment StoreEntitySet="tbl_Trainer_Workshop_Mapping">
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="workShopId" ColumnName="workShopId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="WorkShopDBModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName_Email" ColumnName="UserName_Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserGender" ColumnName="UserGender" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserDob" ColumnName="UserDob" />
+                <ScalarProperty Name="SkillsSet" ColumnName="SkillsSet" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_WorkShop">
+            <EntityTypeMapping TypeName="WorkShopDBModel.tbl_WorkShop">
+              <MappingFragment StoreEntitySet="tbl_WorkShop">
+                <ScalarProperty Name="WorkShopId" ColumnName="WorkShopId" />
+                <ScalarProperty Name="WorkShopTitle" ColumnName="WorkShopTitle" />
+                <ScalarProperty Name="WorkShopDate" ColumnName="WorkShopDate" />
+                <ScalarProperty Name="WorkShopDuration" ColumnName="WorkShopDuration" />
+                <ScalarProperty Name="WorkShopTopics" ColumnName="WorkShopTopics" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMasterPage.master.cs" Inherits="Admin_AdminMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            color: #FFFFFF;
+        }
+        .auto-style2 {
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table width="100%">
+            <tr>
+                <td height="100px" width="100%">
+                    <div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="menu">
+			<ul>
+				<li ><a href="Home.aspx" accesskey="1" title="">Home</a></li>
+				<li><a href="Trainer.aspx" accesskey="2" title="">Trainer</a></li>
+				<li><a href="Workshop.aspx" accesskey="3" title="">Workshop</a></li>
+				<li><a href="Student.aspx" accesskey="4" title="">Stdudent</a></li>
+				<li><a href="Approval.aspx" accesskey="5" title="">Approval</a></li>
+                <li><a href="Material.aspx" accesskey="5" title="">Material</a></li>
+			</ul>
+		</div>
+		<div id="logo">
+			<span>Template Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a></span> </div>
+	</div>
+</div>
+                    <strong><span class="auto-style2">
+                    <asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" CssClass="auto-style1">LogOut</asp:LinkButton>
+                    </span></strong><span class="auto-style1"><strong><span class="auto-style2">&nbsp;| Welcome :
+                    <asp:Label ID="lblUser" runat="server"></asp:Label>
+                    </span></strong></span>
+                </td>
+            </tr>
+            <tr>
+                <td height="300px" width="100%">
+                    <div id="wrapper1">
+
+                     <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder></div></td>
+            </tr>
+            <tr>
+                <td height="50px" width="100%"><div id="copyright">
+	<p>Copyright (c) 2014 www.manzoorthetrainer.com. All rights reserved. | Photos by <a href="http://fotogrph.com/">Fotogrph</a> | Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+                </td>
+            </tr>
+
+        </table>
+      
+    </div>
+    </form>
+</body>
+</html>

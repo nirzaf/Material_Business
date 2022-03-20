@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="StudentMasterPage.master.cs" Inherits="Student_StudentMasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="fonts.css" rel="stylesheet" type="text/css" media="all" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table width="100%">
+            <tr>
+                <td height="100px" width="100%">
+                     <div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="menu">
+			<ul>
+				<li ><a href="Home.aspx" accesskey="1" title="">Home</a></li>
+				<li><a href="Request.aspx" accesskey="2" title="">Request</a></li>
+				<li><a href="Workshop.aspx" accesskey="3" title="">Workshop</a></li>
+				<li><a href="Profile.aspx" accesskey="4" title="">Profile</a></li>
+                <li><a href="Material.aspx" accesskey="5" title="">Material</a></li>
+			</ul>
+		</div>
+		<div id="logo">
+			<span>Template Design by <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a></span> </div>
+	</div>
+</div><strong><asp:LinkButton ID="btnLogOut" runat="server" OnClick="btnLogOut_Click" CssClass="auto-style1">LogOut</asp:LinkButton>
+                     </strong><span class="auto-style1"><strong>&nbsp;| Welcome
+                    <asp:Label ID="lblUser" runat="server"></asp:Label>
+                 <%--   <asp:Menu ID="mStudent" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" Orientation="Horizontal" StaticSubMenuIndent="10px" Width="100%">
+     <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
+     <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+     <DynamicMenuStyle BackColor="#B5C7DE" />
+     <DynamicSelectedStyle BackColor="#507CD1" />
+     <Items>
+         <asp:MenuItem NavigateUrl="~/Student/Home.aspx" Text="Home" Value="Home"></asp:MenuItem>
+         <asp:MenuItem NavigateUrl="~/Student/Request.aspx" Text="Request" Value="Request"></asp:MenuItem>
+         <asp:MenuItem NavigateUrl="~/Student/Workshop.aspx" Text="Workshop" Value="Workshop"></asp:MenuItem>
+         <asp:MenuItem NavigateUrl="~/Student/Profile.aspx" Text="Profile" Value="Profile"></asp:MenuItem>
+         <asp:MenuItem NavigateUrl="~/Student/Material.aspx" Text="Material" Value="Material"></asp:MenuItem>
+     </Items>
+     <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
+     <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+     <StaticSelectedStyle BackColor="#507CD1" />
+ </asp:Menu>--%>
+                     </strong></span>
+                </td>
+            </tr>
+            <tr>
+                <td height="300px" width="100%">  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder></td>
+            </tr>
+            <tr>
+                <td height="50px" width="100%"><div id="copyright">
+	<p><span class="auto-style1">Copyright (c) 2014 www.manzoorthetrainer.com. All rights reserved. | Photos by</span> <a href="http://fotogrph.com/">Fotogrph</a> |<span class="auto-style1"> Design by</span> <a href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>.</p>
+</div>
+                </td>
+            </tr>
+
+        </table>
+      
+    </div>
+    </form>
+</body>
+</html>
